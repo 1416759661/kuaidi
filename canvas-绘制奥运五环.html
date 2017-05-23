@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>奥运五环</title>
+    <style type="text/css">
+        #can{
+            background: white;
+        }
+    </style>
+</head>
+<body>
+  <canvas id="can" width="800" height="600"></canvas>
+  <script type="text/javascript">
+      var canvas=document.getElementById("can");
+      var ctx=canvas.getContext("2d");
+      
+      
+      ctx.save();
+	  ctx.beginPath();
+	  ctx.strokeStyle = "#EBC41F";  
+	  ctx.lineWidth=6;
+	  ctx.arc(260,260,100,0,2*Math.PI);
+	  ctx.stroke();	
+	  ctx.closePath();
+	  ctx.closePath();
+	  
+	  ctx.save();
+	  ctx.beginPath();
+	  ctx.strokeStyle = "#198E4A";  
+	  ctx.lineWidth=6;
+	  ctx.arc(480,260,100,0,2*Math.PI);
+	  ctx.stroke();	
+	  ctx.closePath();
+	  ctx.closePath();
+	  
+	  
+	  ctx.save();
+	  ctx.beginPath();
+	  ctx.strokeStyle = "#163B62";  
+	  ctx.lineWidth=6;
+	  ctx.arc(150,150,100,0,2*Math.PI);
+	  ctx.stroke();	
+	  ctx.closePath();
+	  ctx.closePath();
+	  
+	  ctx.save();
+	  ctx.beginPath();
+	  ctx.strokeStyle = "#000000";  
+	  ctx.lineWidth=6;
+	  ctx.arc(370,150,100,0,2*Math.PI);
+	  ctx.stroke();	
+	  ctx.closePath();
+	  ctx.closePath();
+	  
+	  ctx.save();
+	  ctx.beginPath();
+	  ctx.strokeStyle = "#BF0628";  
+	  ctx.lineWidth=6;
+	  ctx.arc(590,150,100,0,2*Math.PI);
+	  ctx.stroke();	
+	  ctx.closePath();
+	  ctx.closePath();
+	  
+	  
+	  ctx.save();
+	  ctx.beginPath();
+	  ctx.strokeStyle = "#EBC41F";  
+	  ctx.lineWidth=6;
+	  ctx.arc(260,260,100,(-45/180)*Math.PI,(225/180)*Math.PI);
+	  ctx.stroke();	
+	  ctx.closePath();
+	  ctx.closePath();
+	  
+	  ctx.save();
+	  ctx.beginPath();
+	  ctx.strokeStyle = "#198E4A";  
+	  ctx.lineWidth=6;
+	  ctx.arc(480,260,100,(-45/180)*Math.PI,(225/180)*Math.PI);
+	  ctx.stroke();	
+	  ctx.closePath();
+	  ctx.closePath();
+	  
+	 
+	  
+	  
+  </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas绘制饼状图</title>
+    <style type="text/css">
+        #can{
+            background: white;
+        }
+    </style>
+</head>
+<body>
+  <canvas id="can" width="1800" height="1600"></canvas>
+  <script type="text/javascript">
+      var canvas=document.getElementById("can");
+      var ctx=canvas.getContext("2d");
+      
+      var opt1=[{"fill":"2","color":"green","textv":"第一季度"},{"fill":"6","color":"blue","textv":"第二季度"},{"fill":"7","color":"red","textv":"第三季度 "},{"fill":"5","color":"darkorange","textv":"第四季度"}]
+      drawbing(opt1)
+      function drawbing(opt)
+      {
+      		var count=opt.length;
+      		var allfen=0;
+      		opt.forEach(function(item,index){
+      			allfen+=parseInt(item.fill);
+      		});
+      		
+      		var currentfill=0;
+      		opt.forEach(function(item,index){
+      			ctx.save();
+      			currentfill+=parseInt(item.fill);
+      			ctx.moveTo(260,260);
+      			ctx.fillStyle =item.color;  
+      			ctx.globalCompositeOperation="destination-over";
+      			ctx.arc(260,260,100,0,(currentfill/allfen)*2*Math.PI);
+      			ctx.fill();
+      			
+      			ctx.fillRect(400,160+index*30,20,20);
+      			var percent=(item.fill/allfen)*100+"%";
+      			ctx.fillText(item.textv+" "+percent,435,175+index*30);
+      			
+//	      			ctx.save();
+//	      			ctx.font="lighter 12px 微软雅黑 ";
+//	      			ctx.fillStyle ="white";
+//	      			ctx.translate(260,260);
+//	      			ctx.globalCompositeOperation="source-over";
+//	      			ctx.rotate((currentfill/allfen)*2*Math.PI);
+//	      			ctx.fillText(item.textv,50,0);
+//	      			ctx.restore();
+      			ctx.restore();
+      		});
+      		
+      		
+//    		var prerate=0;
+//    		opt.forEach(function(item,index){
+//    			ctx.save();
+//			    ctx.beginPath();
+//			    ctx.fillStyle =item.color;  
+//			    ctx.lineWidth=2;
+//			    ctx.moveTo(260,260);
+//			    //console.log(prerate,prerate+(item.fill/allfen)*2*Math.PI,item.color);
+//			    ctx.arc(260,260,100,prerate,prerate+(item.fill/allfen)*2*Math.PI);
+//			    prerate=prerate+(item.fill/allfen)*2*Math.PI;
+//			    ctx.fill();
+//			    
+////			    ctx.save();
+////			    ctx.translate(260,260)
+////			    ctx.font="bold 18px 微软雅黑 ";
+////			    ctx.fillStyle ="white";
+////			    ctx.rotate(item.fill/allfen)
+////			    ctx.fillText(item.textv,30,0);
+////			    ctx.restore();
+////			    
+//			    ctx.restore();
+			    
+			    
+      		//});      		
+      }
+ 
+	  
+	  
+	  
+
+	  
+	 
+	 
+	  
+	  
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		  <canvas id = "palette" width="500px" height="500px">
+        您的浏览器不支持canvas标签，请升级浏览器或更换其它浏览器
+    </canvas>
+</body>
+</html>
+<script>
+    var palette = document.querySelector("#palette").getContext("2d");
+    var radial = palette.createRadialGradient(200,200,20,200,200,100);
+    radial.addColorStop(0,"#ff0000");
+    radial.addColorStop(0.3,"#FFDD00");
+    radial.addColorStop(0.5,"#FF36DA");
+    radial.addColorStop(0.8,"#1A16FF");
+    radial.addColorStop(1,"#3CFF63");
+    palette.fillStyle = radial;
+    palette.fillRect(50,50,300,300);
+</script>
+	</body>
+</html>

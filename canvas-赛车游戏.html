@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas1 {
+				border: dashed 1px #eee;
+				position: absolute;
+				left:calc(50% - 400px);
+				top:calc(50% - 200px);
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<canvas id="canvas1" width="800" height="400">
+        您的浏览器不支持canvas标签，请升级浏览器或更换其它浏览器
+    </canvas>
+
+		<script>
+			var canvas1 = document.querySelector("#canvas1");
+			var ctx = canvas1.getContext("2d");
+			
+			
+			
+			
+			function drawshan(dx)
+			{
+					//绘制山的背景
+					ctx.save();
+					ctx.beginPath();
+					ctx.fillStyle = "#D4F5FE";
+					ctx.fillRect(0, 0, 800, 80);
+					ctx.closePath();
+					ctx.restore();
+			
+					//绘制山
+					ctx.save();
+					ctx.beginPath();
+					ctx.strokeStyle = "#83CACE";
+					ctx.fillStyle="#83CACE";
+					ctx.lineCap="round";
+					ctx.lineJoin="round";
+					ctx.lineWidth=4;
+					ctx.moveTo(-80000,80);
+					for (var i=1;i<45;i++) {
+						if(i%2==0)
+						{
+							ctx.lineTo(-800+i*50+dx,parseInt(30+i));
+						}
+						else
+						{
+							if(i%3==0)
+							{
+								ctx.lineTo(-800+i*50+dx,70);
+							}
+							else
+							{
+								var dy=parseInt(30-i);
+								if(parseInt(30-i)<0)
+								{
+									dy=30;
+								}
+								ctx.lineTo(-800+i*50+dx,dy);
+							}					
+						}
+						
+					}
+					ctx.lineTo(50000,80);
+					ctx.stroke();
+					ctx.fill();
+					ctx.closePath();
+					ctx.restore();
+					
+					//绘制绿色草地
+					ctx.save();
+					ctx.beginPath();					
+					for(var j=1;j<10;j++)
+					{
+						if(j%2==0)
+						{
+							ctx.fillStyle = "#73B043";
+						}
+						else
+						{
+							ctx.fillStyle = "#8FC04C";
+						}
+						ctx.fillRect(0,80*j, 800, 80);
+					}					
+					ctx.closePath();
+					ctx.restore();
+					
+					
+					//绘制路
+					ctx.save();
+					ctx.beginPath();					
+					ctx.moveTo(350,80);
+					ctx.quadraticCurveTo(120,120,200,400);
+					ctx.lineTo(600,400);
+					ctx.quadraticCurveTo(300,120,400,80);
+					ctx.fillStyle="#606A7C";
+					ctx.fill();
+					ctx.strokeStyle="#fff";
+					ctx.lineWidth=2;
+					ctx.stroke();
+					ctx.closePath();
+					ctx.restore();
+					
+					
+//					//绘制车道线
+//					ctx.save();
+//					ctx.beginPath();					
+//					ctx.moveTo(370,86);
+//					ctx.quadraticCurveTo(363,88,360,90);
+//					ctx.strokeStyle="#fff";
+//					ctx.lineWidth=5;
+//					ctx.stroke();
+//					ctx.closePath();
+//					ctx.restore();
+					
+				
+					
+			}
+			
+			var mydx=0;
+			function mystep()
+			{
+				mydx=mydx+3;
+				drawshan(mydx);
+				requestAnimationFrame(mystep)
+			}
+			mystep();
+			
+			
+			
+			
+			
+			//如果当前浏览器不支持requestAnimationFrame和cancelAnimationFrame，则会退到setTimeout
+			//if ( !requestAnimationFrame || !cancelAnimationFrame ) 			
+			//			var i=10;
+			//			var j=10;
+			//			
+			//			var ctx = document.querySelector("#canvas1").getContext("2d");
+			//			var vx=1;
+			//			var vy=1;
+			//			function mystep()
+			//			{
+			//				if(parseInt(i)+1>=590||parseInt(i)<10)
+			//					{
+			//						vx=-vx;
+			//					}
+			//					if(parseInt(j)+1>=390||parseInt(j)<10)
+			//					{
+			//						vy=-vy;
+			//					}
+			//					i=i+vx;
+			//					j=j+vy;
+			//				drawimg(ctx,i,j);	
+			//				requestAnimationFrame(mystep);
+			//			}
+			//			requestAnimationFrame(mystep);''
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<title>JavaScript绘制金刚古</title>
+
+<canvas id="can" style="border: 1px solid;" width="400" height="300">你的浏览器不支持canvas </canvas></br>
+  多边形边数：<input type="text" id="t1" size="3"/> 
+  <input type="button" value="提交" onclick="get();" /></br>
+<script>
+
+  var r=80;//圆半径
+  var x0=200; 
+  var y0=150; 
+  var x=[];
+  var y=[];
+ function get(){
+    var n=new Number(document.getElementById("t1").value);
+    var canvas = document.getElementById('can');
+    var context = canvas.getContext('2d');
+    context.clearRect(0,0,400,300);
+    draw(context,n);
+ }
+ function drawLine(context,x1,y1,x2,y2){
+    context.strokeStyle = '#663300';
+    context.beginPath();
+    context.moveTo(x1,y1);
+    context.lineTo(x2,y2);
+    context.stroke();
+  }
+     
+ function draw(context,n) { 
+    var t=6.28318/n;
+    for(i=0;i< n;i++){ 
+      x[i]=Math.round(r*Math.cos(i*t)+x0); 
+      y[i]=Math.round(r*Math.sin(i*t)+y0); 
+    } 
+  
+    for(i=0;i<=n-2;i++){ 
+      for(j=i+1;j<=n-1;j++) 
+        drawLine(context,x[i],y[i],x[j],y[j]); 
+      } 
+    }
+ 
+function init() {
+   var canvas = document.getElementById('can');
+   var context = canvas.getContext('2d');
+   draw(context,20);
+ }
+  window.addEventListener("load", init, true);
+</script>
+</html>

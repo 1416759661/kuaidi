@@ -1,0 +1,42 @@
+<!DOCTYPE html>  
+<html>  
+  <head>  
+    <style type="text/css">  
+        .wraper {  
+            position: relative;  
+            border: 1px solid orange;  
+        }  
+    </style>  
+    <script type="text/javascript">  
+        function draw(){  
+            var can6 = document.getElementById('test');  
+            if(can6.getContext){  
+                var cxt = can6.getContext('2d');  
+  
+                //绘制起始点、控制点、终点  
+                cxt.beginPath();  
+                cxt.moveTo(20,170);  
+                cxt.lineTo(130,40);  
+                cxt.lineTo(180,150);  
+                cxt.stroke();  
+  
+                cxt.strokeStyle = "rgba(255,0,0,1)";  
+  
+                //绘制2次贝塞尔曲线  
+                cxt.beginPath();  
+                cxt.moveTo(20,170);  
+                cxt.quadraticCurveTo(130,40,180,150);  
+                cxt.stroke();  
+      
+            }  
+  
+        }  
+    </script>  
+  </head>   
+    
+  <body onload="draw();">  
+      
+    <canvas id="test" width="200px" height="200px" class="wraper"></canvas>  
+  
+  </body>  
+</html>  

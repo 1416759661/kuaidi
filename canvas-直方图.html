@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="box1" width="900" height="400"></canvas>
+		<script type="text/javascript">
+			var canvas1=document.querySelector("#box1");
+			var ctx=canvas1.getContext("2d");
+			
+			//绘制坐标系
+			ctx.save();
+			ctx.translate(0,200);			
+			ctx.strokeStyle="#000";
+			ctx.lineWidth=2;
+			ctx.beginPath();
+			ctx.moveTo(1,0);
+			ctx.lineTo(800,0);
+			ctx.stroke();
+			ctx.closePath();
+			ctx.beginPath();
+			ctx.moveTo(2,-1500);
+			ctx.lineTo(2,0);
+			ctx.stroke();
+			ctx.closePath();
+			
+			//绘制坐标系x轴的箭头
+			ctx.beginPath();
+			ctx.strokeStyle="#000";
+			ctx.moveTo(790,-2);
+			ctx.lineTo(800,0);
+			ctx.lineTo(790,2);
+			ctx.stroke();
+			ctx.closePath();
+			ctx.fillText("x",790,15);
+			
+			//绘制坐标系y轴的箭头
+			ctx.beginPath();
+			ctx.strokeStyle="#000";
+			ctx.moveTo(0,-190);
+			ctx.lineTo(2,-200);
+			ctx.lineTo(4,-190);
+			ctx.stroke();
+			ctx.fillText("y",15,-180);
+			ctx.font="12px 微软雅黑";
+			ctx.fillText("o",5,15);
+			ctx.closePath();
+			
+			
+			for (var i=0;i<20;i++) {
+				ctx.save();
+				ctx.beginPath();	
+				var r=Math.random()*160;
+				var linear = ctx.createLinearGradient(6+36*i,-160,6+36*i,0);
+			    linear.addColorStop(0,"red");
+			    linear.addColorStop(1,"green");
+			    ctx.fillStyle = linear;				
+				ctx.fillRect(6+36*i,-r,20,r-1);
+				var res=parseInt((r/160)*100);
+				console.log(res);
+				ctx.fillText(res.toFixed()+"%",6+36*i,-r-10);
+				ctx.closePath();
+				ctx.restore();
+			}
+			
+			
+			
+			ctx.restore();
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

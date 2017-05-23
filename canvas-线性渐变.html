@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id = "palette" width="500px" height="500px">
+    您的浏览器不支持canvas标签，请升级浏览器或更换其它浏览器
+</canvas>
+</body>
+</html>
+<script>
+    var palette = document.querySelector("#palette").getContext("2d");//设置绘图环境
+    //var linear = palette.createLinearGradient(0,100,300,100);
+    var linear = palette.createLinearGradient(0,100,300,300);
+    linear.addColorStop(0,"red");
+    linear.addColorStop(0.5,"blue");
+    linear.addColorStop(1,"green");
+    palette.fillStyle = linear;
+    palette.fillRect(0,0,300,300);
+</script>
+	</body>
+</html>

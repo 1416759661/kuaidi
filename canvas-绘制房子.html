@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.canv {
+				border: 1px #d3d3d3 solid;
+				margin: 20px 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas class="canv" width="300" height="300" id="canvas01"></canvas>
+		<script>
+			window.onload = function() {
+				drawHouse("canvas01");
+			};
+			//绿瓦红房子
+			function drawHouse(id) {
+				var canv = document.getElementById(id);
+				var canvas = canv.getContext("2d");
+				canvas.fillStyle = "#eeeeff";//画布背景
+				canvas.fillRect(0, 0, 300, 300);
+				console.info("第一步：空白，啥也没有");
+				canvas.fillStyle = "green";
+				canvas.beginPath();
+				canvas.moveTo(150, 10);
+				canvas.lineTo(270, 110);
+				canvas.lineTo(30, 110);
+				canvas.closePath();
+				canvas.fill();
+				canvas.fillStyle = "black";
+				canvas.beginPath();
+				canvas.moveTo(80, 68);
+				canvas.lineTo(80, 20);
+				canvas.lineTo(100, 20);
+				canvas.lineTo(100, 52);
+				canvas.closePath();
+				canvas.fill();
+				console.info("第二步：先盖绿色的房顶，黑色的烟囱");
+				canvas.fillStyle = "red";
+				canvas.beginPath();
+				canvas.moveTo(50, 110);
+				canvas.lineTo(50, 300);
+				canvas.lineTo(250, 300);
+				canvas.lineTo(250, 110);
+				canvas.closePath();
+				canvas.fill();
+				console.info("第三步：刷红色的墙");
+				canvas.fillStyle = "blue";
+				canvas.beginPath();
+				canvas.moveTo(80, 140);
+				canvas.lineTo(80, 190);
+				canvas.lineTo(130, 190);
+				canvas.lineTo(130, 140);
+				canvas.closePath();
+				canvas.fill();
+				canvas.strokeStyle = "white";
+				canvas.beginPath();
+				canvas.moveTo(105, 140);
+				canvas.lineTo(105, 190);
+				canvas.closePath();
+				canvas.stroke();
+				canvas.beginPath();
+				canvas.moveTo(80, 165);
+				canvas.lineTo(130, 165);
+				canvas.closePath();
+				canvas.stroke();
+				console.info("第四步：开个蓝色窗户白色的格子");
+				canvas.fillStyle = "white";
+				canvas.beginPath();
+				canvas.moveTo(150, 210);
+				canvas.lineTo(150, 300);
+				canvas.lineTo(210, 300);
+				canvas.lineTo(210, 210);
+				canvas.closePath();
+				canvas.fill();
+				canvas.fillStyle = "black";
+				canvas.beginPath();
+				canvas.arc(200, 255, 5, 0, Math.PI * 2);
+				canvas.closePath();
+				canvas.fill();
+				canvas.save();
+				console.info("第五步：开一扇白色的门，黑把手");
+			}
+		</script>
+	</body>
+
+</html>

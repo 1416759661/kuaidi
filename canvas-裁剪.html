@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html>
+
+	<head>
+		<title>学习canvas画矩形</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			canvas {
+				border: 1px solid #a5a5a5;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas width="500px" height="500px" id="rack"></canvas>
+		<script>
+			var canvasDom = document.getElementById("rack");
+			if(canvasDom.getContext) {
+				var context = canvasDom.getContext("2d");
+				var img = new Image();
+				img.src = "imgs/a.png";
+				img.onload = function() {
+					context.arc(180,150,100,0,2*Math.PI,false);
+					context.clip();
+					context.drawImage(img, 70, 0, 500, 500, 10, 10, 300, 300);
+					/*
+					sx：图像上的x坐标
+	
+	        sy：图像上的y坐标
+	
+	        sw：矩形区域的宽度
+	
+	        sh：矩形区域的高度
+	
+	        dx：画在canvas的x坐标
+	
+	        dy：画在canvas的y坐标
+	
+	        dw：画出来的宽度
+	
+	        dh：画出来的高度
+					*/
+					
+				}
+
+			}
+		</script>
+	</body>
+
+</html>

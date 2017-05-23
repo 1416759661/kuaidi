@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<canvas width="500px" height="500px" id="rack"></canvas>
+		<script>
+			var canvasDom = document.getElementById("rack");
+			if(canvasDom.getContext) {
+				var context = canvasDom.getContext("2d");
+
+				context.strokeStyle = "blue";
+
+				context.moveTo(10, 10);
+				context.lineTo(100, 100);
+				context.stroke();
+   				//====  添加的代码 start====
+              	context.beginPath();
+              	//====  添加的代码 end====
+				context.strokeStyle = "red";
+				context.fillStyle="green";
+				context.moveTo(30, 50);
+				context.lineTo(30, 90);
+				context.lineTo(200, 200);
+				//context.closePath();
+				context.stroke();//执行描边
+				context.fill();//执行填充
+
+			}
+		</script>
+	</body>
+
+</html>

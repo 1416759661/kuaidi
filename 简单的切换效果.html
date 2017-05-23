@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#pages {
+				width: 100%;
+				heigt: 100%;
+			}
+			
+			.page {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+				color: white;
+			}
+			
+			.page1 {
+				background: blue;
+				display: block;
+			}
+			
+			.page2 {
+				background: red;
+			}
+			
+			.page3 {
+				background: yellow;
+			}
+			
+			.hide {
+				display: none;
+			}
+			
+			.show {
+				display: block;
+			}
+		</style>
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/touch.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="pages">
+			<div class="page page1">页面一</div>
+			<div class="page page2">页面二</div>
+			<div class="page page3">页面三</div>
+		</div>
+		<script type="text/javascript">
+			//			//测试对swipeUp(向上滑动)的监听是否有效
+			//			$(document).swipeUp(function() {
+			//				alert("ok1");
+			//			});
+			//			$(document).swipeLeft(function() {
+			//				alert("ok2");
+			//			});
+			//			$(document).swipeRight(function() {
+			//				alert("ok3");
+			//			});
+			//			
+			//			$(document).swipeDown(function() {
+			//				alert("ok4");
+			//			});
+
+			var curpage = 1;
+			var totalpage, nextpage;
+
+			$(document).swipeUp(function() {
+
+				//隐藏当前页面
+
+				$(".page" + curpage).removeClass("show");
+				$(".page" + curpage).addClass("hide");
+
+				//判断当前页是否为最后一页
+
+				//获取总页数
+				totalpage = $(".page").length;
+				//如果是最后一页，显示第一页，否则显示下一页
+				if(curpage == totalpage) {
+					$(".page1").removeClass("hide");
+					$(".page1").addClass("show");
+					curpage = 1;
+				} else {
+					nextpage = curpage + 1;
+					$(".page" + nextpage).removeClass("hide");
+					$(".page" + nextpage).addClass("show");
+					curpage = nextpage;
+				}
+
+			});
+		</script>
+	</body>
+
+</html>

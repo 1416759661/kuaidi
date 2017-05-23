@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form测试</title>
+    <style type="text/css">
+        #can{
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+  <canvas id="can" width="800px" height="600pxf"></canvas>
+  <script type="text/javascript">
+      var canvas=document.getElementById("can");
+      var ctx=canvas.getContext("2d");
+//      三角形
+      ctx.beginPath();
+      ctx.moveTo(100,50);
+      ctx.lineTo(40,80);
+      ctx.lineTo(120,100);
+      ctx.closePath();
+      ctx.lineWidth=10;
+      ctx.fillStyle='yellow';
+      ctx.strokeStyle="blue";
+      ctx.fill();
+      ctx.stroke();
+//      圆
+      ctx.beginPath();
+      ctx.arc(300,300,100,30,270,false);
+      ctx.closePath();
+      ctx.fill();
+//      矩形
+      ctx.fillRect(500,300,100,100);
+      ctx.fillStyle = "rgba(255,0,0,1)"; //给定画笔颜色为红色
+      ctx.lineWidth=15;
+      ctx.save();//保存颜色红色
+      ctx.beginPath();
+      ctx.rect(300,300,110,110);
+      ctx.fill();
+      ctx.stroke();
+      //新设置一下画笔并作画
+      ctx.fillStyle = '#0f0';
+      ctx.lineWidth=5;
+      ctx.save();
+      ctx.fillRect(300,400,111,111);
+      ctx.fillStyle = 'blue';
+      //还原到上次储存的地方
+      ctx.restore();
+      ctx.restore();
+      console.log("还原后的宽度："+ctx.lineWidth);
+      ctx.fillRect(300,500,111,111);   //再次绘制矩形，颜色为restore后的颜色
+      ctx.strokeRect(300,500,111,111);
+
+  </script>
+</body>
+</html>

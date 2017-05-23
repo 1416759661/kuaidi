@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas绘图</title>
+    <style type="text/css">
+    	*{
+    		margin: 0;
+    		padding: 0;
+    	}
+        #can1{
+          border: solid 1px #eee;
+          background-color: darkturquoise;
+        }
+    </style>
+</head>
+<body>
+  <canvas id="can1" width="500" height="500"></canvas>
+  <script type="text/javascript">
+  
+  
+  	
+  
+      var canvas=document.querySelector("#can1");
+      var ctx=canvas.getContext("2d");
+      
+      function drawpic(r)
+      {
+      	  ctx.clearRect(0,0,canvas.width,canvas.height);
+      	  ctx.beginPath();
+      	  ctx.arc(250,250,100,0,2*Math.PI);
+	      ctx.strokeStyle="white";
+	      ctx.stroke();
+	      ctx.closePath();
+	      
+	      ctx.save();
+	      ctx.beginPath();
+	      ctx.lineWidth=6;
+	      ctx.arc(250,250,100,0,(r/180)*Math.PI);
+	      ctx.lineCap="round"
+	      ctx.strokeStyle="white";
+	      ctx.stroke();
+	      ctx.closePath();
+	      ctx.restore();
+	      
+	      ctx.save();
+	      ctx.font="lighter 26px 微软雅黑";
+	      ctx.strokeStyle="white";
+	      var txt=parseInt((r/360)*100)+"%";
+	      ctx.strokeText(txt,232,258)
+	      ctx.restore();
+      }
+      drawpic(0);
+      var i=0;
+      var t=setInterval(function(){
+      	i++;
+      	if(i==360)
+      	{
+      		clearInterval(t);
+      	}
+      	requestAnimationFrame(drawpic(i));      	
+      },30);
+      
+      
+      
+      
+  </script>
+</body>
+</html>

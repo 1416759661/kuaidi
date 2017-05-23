@@ -1,0 +1,52 @@
+﻿<!DOCTYPE>
+<html>
+  <head>
+       <title>学习canvas画矩形</title>
+       <style>
+         body{ margin: 0; padding:0;}
+         canvas{ border:1px solid #a5a5a5;}
+       </style>
+  </head>
+  <body>
+       <canvas width="500px" height="500px" id="rack"></canvas>
+       <script>
+         var canvasDom = document.getElementById("rack");
+         if(canvasDom.getContext) {
+              var context = canvasDom.getContext("2d");
+			  			context.fillStyle="darkcyan";
+              context.strokeStyle = "red";//边框颜色
+              context.strokeRect(10, 10, 100, 100);//前两个是起点坐标x,y 后面是宽度和高度
+
+              //设置描边线条的宽度
+              context.strokeStyle = "#eee";
+              context.lineWidth = 10;
+              context.strokeRect(130, 10, 100, 100);
+
+              //设置描边线条相交的方式（1.round）
+              context.lineJoin = "round";
+              // round:两条线条交汇时 创建圆角边角
+              context.strokeStyle = "#00ff00";
+              context.strokeRect(250, 10, 100, 100);
+
+              //设置描边线条相交的方式（2.bevel）
+              context.lineJoin = "bevel";
+              //bever:两条线挑交汇时，创建斜角边角
+              context.strokeRect(380, 10, 100, 100);
+
+              //设置描边线条交汇的方式(3.miter--默认)
+              context.lineJoin = "miter"
+              //miter：两条线条交汇时，创建尖角 边角
+              context.strokeRect(10, 150, 100, 100);
+              
+              
+              
+             
+             //miterLimit属性：设置或返回最大斜角长度(默认为10)
+              context.lineWidth = 20;
+              context.miterLimit =1;
+              context.strokeRect(130, 150, 100, 100);//描边
+              context.fillRect(130, 150, 100, 100);//填充要指定坐标
+         }
+       </script>
+  </body>
+</html>

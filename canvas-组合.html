@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		
+		<!--
+			type：
+
+source-over（默认值）:在原有图形上绘制新图形
+
+destination-over:在原有图形下绘制新图形
+
+source-in:显示原有图形和新图形的交集，新图形在上，所以颜色为新图形的颜色
+
+destination-in:显示原有图形和新图形的交集，原有图形在上，所以颜色为原有图形的颜色
+
+source-out:只显示新图形非交集部分
+
+destination-out:只显示原有图形非交集部分
+
+source-atop:显示原有图形和交集部分，新图形在上，所以交集部分的颜色为新图形的颜色
+
+destination-atop:显示新图形和交集部分，新图形在下，所以交集部分的颜色为原有图形的颜色
+
+lighter:原有图形和新图形都显示，交集部分做颜色叠加
+
+xor:重叠飞部分不现实
+
+copy:只显示新图形
+			
+			
+		-->
+		
+		<canvas id="box1" width="1000" height="1000"></canvas>
+		<script type="text/javascript">
+		var canvas = document.getElementById("box1");
+		var context = canvas.getContext("2d");
+		context.fillStyle="blue";
+		context.fillRect(0,0,200,200);
+		context.beginPath();
+		context.fillStyle="red";
+		//context.globalCompositeOperation="copy";
+		context.arc(200,100,50,0,2*Math.PI,false);
+		context.fill();
+		context.beginPath();
+		context.fillStyle="green";
+		 //把图像保存到新的窗口
+         var w=window.open(canvas.toDataURL("image/jpeg"),"smallwin","width=400,height=350");
+		//context.globalCompositeOperation="source-in";
+		//context.arc(200,140,50,0,2*Math.PI,false);
+		//context.fill();
+//			function draw10(id) {
+//				var canvas = document.getElementById(id);
+//				if(canvas == null) {
+//					return false;
+//				}
+//				var context = canvas.getContext("2d");
+//				var oprtns = new Array(
+//					"source-over",
+//					"destination-over",
+//					"source-in",
+//					"destination-in",
+//					"source-out",
+//					"destination-out",
+//					"source-atop",
+//					"destination-atop",
+//					"lighter",
+//					"xor",
+//					"copy"
+//				);
+//				var i = 0; //组合效果编号
+//
+//				//结合setinterval动态显示组合
+//				var interal = setInterval(function() {
+//					if(i == 10) {
+//						i = 0;
+//					} else {
+//						i++;
+//					}
+//					//蓝色矩形
+//					context.fillStyle = "blue";
+//					context.fillRect(10, 10, 60, 60);
+//					//设置组合方式 
+//					context.globalCompositeOperation = oprtns[i];
+//					//设置新图形（红色圆形）
+//					context.beginPath();
+//					context.fillStyle = "red";
+//					context.arc(60, 60, 30, 0, Math.PI * 2, false);
+//					context.fill();
+//				}, 1000);
+//
+//			}
+//			draw10("box1")
+		</script>
+	</body>
+
+</html>

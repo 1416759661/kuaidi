@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="480" height="300" style="border: 1px solid #c3c3c3;">  
+ 你的浏览器不支持canvas  
+</canvas>  
+    <script type="text/javascript">  
+        var c = document.getElementById("myCanvas");  
+        
+        
+        var cxt = c.getContext("2d");  
+        
+        function drawtext(k)
+        {
+        	var pos=[{x:190,y:90,opc:1,font:"bold 90px Arial"},{x:260,y:90,opc:0.7,font:"bold 70px Arial"},{x:310,y:90,opc:0.6,font:"bold 50px Arial"},{x:350,y:90,opc:0.5,font:"bold 30px Arial"},{x:370,y:90,opc:0.4,font:"bold 20px Arial"},{x:145,y:90,opc:0.7,font:"bold 70px Arial"},{x:110,y:90,opc:0.6,font:"bold 50px Arial"},{x:90,y:90,opc:0.5,font:"bold 30px Arial"},{x:80,y:90,opc:0.4,font:"bold 20px Arial"}]
+        	var mytext=["A","B","C","D","E","F","G","H","I"];
+        	cxt.clearRect(0,0,c.width,c.height);
+        	for (var i=0;i<9;i++) {
+        		cxt.save();
+        		cxt.beginPath();
+        		cxt.fillStyle = "#0f0";  
+	      	    var fontSize = 90;  
+			    cxt.font = pos[i].font;  
+			    var n=(i+k)%8;
+			    cxt.fillText(mytext[n], pos[i].x, pos[i].y); 
+			    cxt.closePath();
+			    cxt.restore();
+        	}
+        }
+        
+        var k=0;
+        function step()
+        {
+        	k++;
+        	if(k>8)
+        	{
+        		k=0
+        	}
+        	drawtext(k);
+        	setTimeout(step,500);
+        }
+        step();
+ 
+       
+        
+        
+//      var fontSize = 90;  
+//      cxt.font = "bold 90px Arial";  
+//      cxt.fillText("立", 190, 90);  
+//
+//      cxt.globalAlpha = 0.7;  
+//      cxt.font = "bold 70px Arial";  
+//      cxt.fillText("体", 260, 90);  
+//
+//      cxt.globalAlpha = 0.6;  
+//      cxt.font = "bold 50px Arial";  
+//      cxt.fillText("感", 310, 90);  
+//
+//      cxt.globalAlpha = 0.5;  
+//      cxt.font = "bold 30px Arial";  
+//      cxt.fillText("文", 350, 90);  
+//
+//      cxt.globalAlpha = 0.4;  
+//      cxt.font = "bold 20px Arial";  
+//      cxt.fillText("字", 370, 90);  
+//
+//      cxt.globalAlpha = 0.7;  
+//      cxt.font = "bold 70px Arial";  
+//      cxt.fillText("体", 145, 90);  
+//
+//      cxt.globalAlpha = 0.6;  
+//      cxt.font = "bold 50px Arial";  
+//      cxt.fillText("感", 110, 90);  
+//
+//      cxt.globalAlpha = 0.5;  
+//      cxt.font = "bold 30px Arial";  
+//      cxt.fillText("文", 90, 90);  
+//
+//      cxt.globalAlpha = 0.4;  
+//      cxt.font = "bold 20px Arial";  
+//      cxt.fillText("字", 80, 90);  
+         
+    </script>  
+	</body>
+</html>

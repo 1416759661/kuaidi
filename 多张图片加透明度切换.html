@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#pages {
+				width: 100%;
+				heigt: 100%;
+			}
+			
+			.page {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: white;
+				z-index: 1;
+			}
+			
+			.page1 {
+				background: blue;
+				display: block;
+				z-index: 100;
+			}
+			
+			.page2 {
+				background: red;
+			}
+			
+			.page3 {
+				background: yellow;
+			}
+			
+			.page4 {
+				background: #AA22FF;
+			}
+			
+			.page5 {
+				background: #ff050e;
+			}
+			
+			.page6 {
+				background: #999999;
+			}
+			
+			.page7 {
+				background: #444400;
+			}
+			
+			.page8 {
+				background: #267DB7;
+			}
+			
+			.page9 {
+				background: #ffcc80;
+			}
+			
+			.hide {
+				z-index: 99;
+			}
+			
+			.show {
+				z-index: 100;
+			}
+			
+			.page img {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/touch.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="pages">
+
+			<div class="page page1"><img src="imgs/001.jpg" alt="" /></div>
+			<div class="page page2"><img src="imgs/002.jpg" alt="" /></div>
+			<div class="page page3"><img src="imgs/003.jpg" alt="" /></div>
+			<div class="page page4"><img src="imgs/004.jpg" alt="" /></div>
+			<div class="page page5"><img src="imgs/005.jpg" alt="" /></div>
+			<div class="page page6"><img src="imgs/006.jpg" alt="" /></div>
+			<div class="page page7"><img src="imgs/007.jpg" alt="" /></div>
+			<div class="page page8"><img src="imgs/008.jpg" alt="" /></div>
+			<div class="page page9"><img src="imgs/009.jpg" alt="" /></div>
+
+		</div>
+		<script type="text/javascript">
+			var curpage = 1;
+			var totalpage, nextpage, lastpage, nexttotalpage;
+
+			$(document).swipeUp(function() {
+
+				//判断当前页是否为最后一页
+
+				//获取总页数,以及总页数的+1后的序号，供后面for循环使用
+				totalpage = $(".page").length;
+				nexttotalpage = totalpage + 1;
+				//如果是最后一页，显示第一页，并移除所有page上的所有css效果类，否则显示下一页，并移除上一页的切换动画效果
+				if(curpage == totalpage) {
+					for(var i = 1; i < nexttotalpage; i++) {
+						$(".page" + i).removeClass("hide");
+						$(".page" + i).removeClass("show");
+						$(".page" + i).removeClass("pt-page-moveFromBottomFade");
+					}
+					$(".page1").addClass("show");
+					$(".page1").addClass("pt-page-moveFromBottomFade");
+					curpage = 1;
+				} else {
+					nextpage = curpage + 1;
+					lastpage = curpage - 1;
+					$(".page" + curpage).removeClass("pt-page-moveFromBottomFade");
+					$(".page" + curpage).addClass("pt-page-moveToTopFade");
+					$(".page" + curpage).removeClass("show");
+					$(".page" + curpage).addClass("hide");
+					$(".page" + nextpage).removeClass("hide");
+					$(".page" + nextpage).addClass("show");
+					$(".page" + nextpage).addClass("pt-page-moveFromBottomFade");
+					$(".page" + lastpage).removeClass("pt-page-moveToTopFade");
+					curpage = nextpage;
+				}
+			});
+		</script>
+	</body>
+
+</html>

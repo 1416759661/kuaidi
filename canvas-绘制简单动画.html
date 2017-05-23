@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas1 {
+				border: dashed 1px #eee;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<canvas id="canvas1" width="600" height="400">
+        您的浏览器不支持canvas标签，请升级浏览器或更换其它浏览器
+    </canvas>
+
+		<script>
+			function drawimg(ctx,x,y) {
+				ctx.clearRect(0, 0,600,400);
+				var radial = ctx.createRadialGradient(x,y, 1, x, y, 10);
+				radial.addColorStop(0, "#eee");
+				radial.addColorStop(1, "#ddd");
+				ctx.fillStyle = radial;
+				ctx.arc(x,y, 10, 0, 2 * Math.PI, false);
+				ctx.fill();
+				ctx.beginPath();
+				//ctx.clearRect(0, 0,600,400);
+			}
+			
+			var i=0;
+			var j=0;
+			
+			var ctx = document.querySelector("#canvas1").getContext("2d");
+			var t=setInterval(function(){
+				var v=(590-i)*0.05;
+				if(v<0.01)
+				{
+					v=0.01;
+				}
+				if(parseInt(i)>=590)
+				{
+					i=590;
+					clearInterval(t);
+				}
+				else
+				{
+					i=i+v;
+				}
+				console.log(i);
+				drawimg(ctx,i,10);
+			},30);
+		</script>
+	</body>
+
+</html>

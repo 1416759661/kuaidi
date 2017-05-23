@@ -1,0 +1,26 @@
+<!DOCTYPE>
+<html>
+  <head>
+       <title>学习canvas画矩形</title>
+       <style>
+         body{ margin: 0; padding:0;}
+         canvas{ border:1px solid #a5a5a5;}
+       </style>
+  </head>
+  <body>
+       <canvas width="500px" height="500px" id="rack"></canvas>
+       <script>
+         var canvasDom = document.getElementById("rack");
+         if(canvasDom.getContext) {
+            var context = canvasDom.getContext("2d");
+            context.rotate((30/180)*Math.PI);
+            context.beginPath();
+						context.fillStyle="green";
+						context.fillRect(0,0,300,300);
+						context.beginPath();
+						context.fillStyle="blueviolet";
+						context.fillRect(0,0,200,200);
+         }
+       </script>
+  </body>
+</html>

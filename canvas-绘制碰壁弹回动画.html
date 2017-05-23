@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas1 {
+				border: dashed 1px #eee;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<canvas id="canvas1" width="600" height="400">
+        您的浏览器不支持canvas标签，请升级浏览器或更换其它浏览器
+    </canvas>
+
+		<script>
+			function drawimg(ctx,x,y) {
+				ctx.clearRect(0, 0,600,400);
+				var radial = ctx.createRadialGradient(x,y, 1, x, y, 10);
+				radial.addColorStop(0, "#eee");
+				radial.addColorStop(1, "#ddd");
+				ctx.fillStyle = radial;
+				ctx.arc(x,y, 10, 0, 2 * Math.PI, false);
+				ctx.fill();
+				ctx.beginPath();
+				//ctx.clearRect(0, 0,600,400);
+			}
+			
+			var i=10;
+			var j=10;
+			
+			var ctx = document.querySelector("#canvas1").getContext("2d");
+			var vx=1;
+			var vy=1;
+			function mystep()
+			{
+				if(parseInt(i)+1>=590||parseInt(i)<10)
+					{
+						vx=-vx;
+					}
+					if(parseInt(j)+1>=390||parseInt(j)<10)
+					{
+						vy=-vy;
+					}
+					i=i+vx;
+					j=j+vy;
+				drawimg(ctx,i,j);	
+				requestAnimationFrame(mystep);
+			}
+			requestAnimationFrame(mystep);
+			
+//			var t=setInterval(function(){
+//				if(parseInt(i)+1>=590||parseInt(i)<10)
+//				{
+//					vx=-vx;
+//				}
+//				if(parseInt(j)+1>=390||parseInt(j)<10)
+//				{
+//					vy=-vy;
+//				}
+//				i=i+vx;
+//				j=j+vy;
+//				drawimg(ctx,i,j);
+//			},30);
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box1 {
+				
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="box1" width="600" height="310">
+			
+		</canvas>
+		<!--<script type="text/javascript">
+			/*
+			① 主要作用：绘制矢量图 
+			② 矢量图图形（路径）-（ILL）    位图图像（像素点）- PS中图像都是位图 
+			③ Canvas 能够制作动画,但是不是为了制作动画而生的也能够制作游戏。主要为了绘图而生。
+			④ 能够设置宽高 推荐样式写在style；Canvas 相当于是一个绘制图形的容器，并没有绘制功能，需要借助JS（脚本）实现绘制功能。
+			*/
+			
+			var cnvas = document.getElementById('box1');
+			var context = cnvas.getContext('2d');
+			context.beginPath();//告诉浏览器开始绘图了，记录下
+			context.moveTo(30,30);//从哪个地方开始画图
+			context.lineWidth = 2;//路径的宽度
+			context.lineTo(350,5);
+			context.lineTo(250,100);
+			context.lineTo(5,100);
+			//context.lineTo(5,5);
+			//context.closePath();//把起点和终点闭合起来，如果没有有closePath()结束的话，就不会有直线去链接结束点和起始点。
+			context.fillStyle = 'blue';//设置要填充的颜色
+			context.stroke(); // 描边
+			context.fill(); //执行填充操作
+			
+		</script>-->
+
+		<script type="text/javascript">
+			var palette = document.querySelector("#box1").getContext("2d"); //设置绘图环境
+			palette.moveTo(100, 100);
+			palette.lineTo(200, 100);
+			
+			palette.moveTo(300, 300);
+			palette.lineTo(250, 200);
+			palette.lineTo(200, 200);
+			palette.closePath();
+			//palette.lineTo(100, 200);
+			//palette.lineTo(100, 100);
+			palette.lineWidth = 10;
+			palette.strokeStyle = 'green';
+			palette.stroke();
+		</script>
+	</body>
+
+</html>
